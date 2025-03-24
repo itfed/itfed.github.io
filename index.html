@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Константин Федунов | IT-специалист</title>
+    <title>Hello World</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
-            --primary-color: #00ffff;
-            --secondary-color: #ff007f;
-            --bg-color: #282c34;
-            --text-color: #ffffff;
+            --primary: #00ffff;
+            --secondary: #ff007f;
+            --dark: #282c34;
+            --text: #ffffff;
         }
         
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle at center, #2a303c 0%, var(--dark) 100%);
+            color: var(--text);
+            font-family: 'Courier New', monospace;
             text-align: center;
-            padding: 0;
-            margin: 0;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -29,101 +29,157 @@
         
         .container {
             padding: 2rem;
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            letter-spacing: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
         }
         
         .subtitle {
             font-size: 1.2rem;
             color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2.5rem;
-            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
         }
         
+        /* Кнопки с градиентным заполнением */
         .btn-main {
             display: inline-block;
             font-size: 1.1rem;
-            color: var(--primary-color);
-            text-decoration: none;
-            padding: 12px 30px;
-            border: 2px solid var(--primary-color);
+            color: var(--primary);
+            background: transparent;
+            border: 2px solid var(--primary);
             border-radius: 50px;
-            transition: all 0.3s ease;
+            padding: 10px 25px;
             margin: 0.5rem;
-            font-weight: 500;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-decoration: none;
+        }
+        
+        .btn-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            transition: width 0.4s ease;
+            z-index: -1;
         }
         
         .btn-main:hover {
-            background-color: var(--primary-color);
-            color: var(--bg-color);
+            color: var(--dark);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
         }
         
+        .btn-main:hover::before {
+            width: 100%;
+        }
+        
+        /* Аватар с градиентной рамкой */
         .avatar {
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            overflow: hidden;
-            border: 3px solid var(--primary-color);
-            margin: 2rem auto;
+            object-fit: cover;
+            border: 3px solid transparent;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box,
+                        linear-gradient(90deg, var(--secondary), var(--primary)) border-box;
+            margin: 1.5rem auto;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
         }
         
         .avatar:hover {
             transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.3);
-        }
-        
-        .avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
         }
         
         .name-title {
-            font-size: 1.4rem;
-            margin: 1.5rem 0;
-            color: var(--text-color);
-            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 1rem 0;
+            color: var(--text);
         }
         
+        /* Стеклянные соц-кнопки */
         .social-links {
-            margin: 3rem 0 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
         }
         
         .social-link {
-            color: var(--primary-color);
-            font-size: 2rem;
-            margin: 0 15px;
+            color: var(--text);
+            font-size: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            display: inline-block;
         }
         
         .social-link:hover {
-            color: var(--secondary-color);
-            transform: translateY(-5px);
+            color: var(--primary);
+            transform: translateY(-3px);
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
         }
         
+        /* Разделитель */
         .divider {
             width: 100px;
             height: 2px;
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-            margin: 2rem auto;
-            opacity: 0.5;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            margin: 1.5rem auto;
+            opacity: 0.7;
+        }
+        
+        /* Анимированные пузырьки фона */
+        .bg-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            bottom: -160px;
+            animation: square 20s infinite;
+            transition-timing-function: linear;
+        }
+        
+        @keyframes square {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.2; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
         }
         
         @media (max-width: 768px) {
@@ -134,19 +190,29 @@
             .container {
                 padding: 1.5rem;
             }
+            
+            .btn-main {
+                display: block;
+                margin: 0.5rem auto;
+                width: 80%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Анимированный фон -->
+    <ul class="bg-bubbles">
+        <li></li>
+        <li></li>
+    </ul>
+    
     <div class="container">
         <h1>Hello, World!</h1>
         <div class="subtitle">Добро пожаловать на мою персональную страницу</div>
         
-        <div class="avatar">
-            <img src="yu-UfYZy-d.jpg" alt="Фотография Федунова Константина">
-        </div>
+        <img src="yu-UfYZy-d.jpg" alt="Федунов Константин" class="avatar">
         
-        <div class="name-title">Федунов Константин</div>
+        <div class="name-title">itшник Федунов Константин</div>
         <div class="subtitle">IT-специалист / Разработчик</div>
         
         <div class="divider"></div>
@@ -155,20 +221,32 @@
         <a href="#contact" class="btn-main">Контакты</a>
         
         <div class="social-links">
-            <a href="https://github.com/itfed" class="social-link" target="_blank">
+            <a href="https://github.com/itfed" class="social-link" target="_blank" aria-label="GitHub">
                 <i class="fab fa-github"></i>
             </a>
-            <a href="#" class="social-link">
-                <i class="fab fa-linkedin"></i>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" class="social-link">
-                <i class="fab fa-telegram"></i>
+            <a href="#" class="social-link" aria-label="Telegram">
+                <i class="fab fa-telegram-plane"></i>
             </a>
         </div>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Динамическое создание пузырьков фона
+        document.addEventListener('DOMContentLoaded', function() {
+            const bubblesContainer = document.querySelector('.bg-bubbles');
+            for (let i = 0; i < 8; i++) {
+                const bubble = document.createElement('li');
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.width = (Math.random() * 40 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = (Math.random() * 5) + 's';
+                bubble.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                bubblesContainer.appendChild(bubble);
+            }
+        });
+    </script>
 </body>
 </html>
