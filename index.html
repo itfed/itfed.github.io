@@ -24,16 +24,16 @@
         }
         a {
             font-size: 1.5rem;
-            color: #00ffff;
+            color: #282c34; /* Цвет текста для ссылки */
             text-decoration: none;
             padding: 10px 20px;
-            border: 2px solid #00ffff;
+            border: 2px solid #282c34; /* Цвет обводки для ссылки */
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
         }
         a:hover {
-            background-color: #00ffff;
-            color: #282c34;
+            background-color: #282c34;
+            color: #00ffff; /* Цвет текста при наведении */
         }
         .avatar {
             width: 150px;
@@ -47,21 +47,22 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 10%; /* Поднимаем изображение немного вверх */
+            object-position: center 5%; /* Поднимаем изображение немного выше */
         }
         .footer-text {
             font-size: 1.2rem;
             margin-top: 10px;
+            color: #00ffff; /* Цвет текста для "itшник Федунов Константин" */
         }
     </style>
 </head>
 <body>
     <h1>Hello, World!</h1>
+    <div class="footer-text">itшник Федунов Константин</div>
     <p><a href="/resume">Мое резюме</a></p>
     <div class="avatar">
         <img src="yu-UfYZy-d.jpg" alt="Фотография Федунова Константина">
     </div>
-    <div class="footer-text">itшник Федунов Константин</div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
