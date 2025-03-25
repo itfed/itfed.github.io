@@ -13,6 +13,7 @@
             --dark: #1a1e28;
             --light: #f8f9fa;
             --text: #e0e0e0;
+            --photo-accent: #ff6b6b;
         }
         
         body {
@@ -100,6 +101,23 @@
             width: 100%;
         }
         
+        .btn-photo {
+            color: white;
+            border: none;
+            background: linear-gradient(135deg, var(--photo-accent), #ff8e8e);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-photo:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-photo i {
+            margin-right: 8px;
+        }
+        
         .avatar-container {
             position: relative;
             width: 200px;
@@ -177,6 +195,13 @@
             opacity: 0.7;
         }
         
+        .photo-hint {
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+        
         .bg-bubbles {
             position: fixed;
             top: 0;
@@ -216,6 +241,11 @@
                 padding: 1.5rem;
             }
             
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .btn-main {
                 display: block;
                 width: 80%;
@@ -253,11 +283,20 @@
         <div class="name-title">Федунов Константин</div>
         <div class="subtitle">IT-специалист / Разработчик</div>
         
+        <div class="photo-hint">
+            ...а ещё я профессионально фотографирую
+        </div>
+        
         <div class="divider"></div>
         
         <div class="buttons">
             <a href="/resume" class="btn-main">Моё резюме</a>
-            <a href="https://github.com/itfed?tab=repositories" class="btn-main" target="_blank">Мои проекты</a>
+            <a href="https://github.com/itfed?tab=repositories" class="btn-main" target="_blank">
+                <i class="fas fa-code"></i> IT-проекты
+            </a>
+            <a href="https://fedunov.ru" class="btn-main btn-photo" target="_blank">
+                <i class="fas fa-camera"></i> Посмотреть фотоработы
+            </a>
         </div>
         
         <div class="social-links">
