@@ -95,6 +95,7 @@
             padding: 12px 32px;
             margin: 0.75rem;
             cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             font-weight: 600;
             text-decoration: none;
             position: relative;
@@ -114,11 +115,32 @@
             z-index: -1;
         }
         
+        .btn-main:hover {
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
+            text-decoration: none;
+        }
+        
+        .btn-main:hover::before {
+            width: 100%;
+        }
+        
         .btn-photo {
             color: white;
             border: none;
             background: linear-gradient(135deg, var(--photo-accent), #ff8e8e);
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .btn-photo:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-photo i {
+            margin-right: 8px;
         }
         
         .avatar-container {
@@ -132,6 +154,7 @@
             background: linear-gradient(var(--dark), var(--dark)) padding-box,
                         linear-gradient(135deg, var(--secondary), var(--primary)) border-box;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
         }
         
         .avatar {
@@ -139,6 +162,15 @@
             height: 120%;
             object-fit: cover;
             object-position: center top 20%;
+            transition: transform 0.5s ease;
+        }
+        
+        .avatar-container:hover .avatar {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        .avatar-container:hover {
+            box-shadow: 0 15px 40px rgba(0, 247, 255, 0.25);
         }
         
         .social-links {
@@ -151,6 +183,7 @@
         .social-link {
             color: var(--text);
             font-size: 1.8rem;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -159,6 +192,14 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(0, 247, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
             text-decoration: none;
         }
         
@@ -185,37 +226,14 @@
             border-radius: 2px;
         }
         
-        @media (hover: hover) {
-            .btn-main:hover {
-                color: var(--dark);
-                transform: translateY(-3px);
-                box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
-                text-decoration: none;
+        @keyframes square {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
             }
-            
-            .btn-main:hover::before {
-                width: 100%;
-            }
-            
-            .btn-photo:hover {
-                color: white;
-                transform: translateY(-3px) scale(1.03);
-                box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
-            }
-            
-            .avatar-container:hover .avatar {
-                transform: scale(1.05) rotate(5deg);
-            }
-            
-            .avatar-container:hover {
-                box-shadow: 0 15px 40px rgba(0, 247, 255, 0.25);
-            }
-            
-            .social-link:hover {
-                color: var(--primary);
-                transform: translateY(-5px) scale(1.1);
-                background: rgba(0, 247, 255, 0.2);
-                box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
             }
         }
         
@@ -273,7 +291,15 @@
             }
             
             .bg-bubbles {
-                display: none; /* Отключаем анимацию пузырьков на мобильных */
+                display: none;
+            }
+            
+            .btn-main:hover,
+            .btn-photo:hover,
+            .avatar-container:hover .avatar,
+            .avatar-container:hover,
+            .social-link:hover {
+                transform: none !important;
             }
         }
     </style>
@@ -337,7 +363,6 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Отключаем создание пузырьков на мобильных
             if (window.innerWidth > 768) {
                 const bubblesContainer = document.querySelector('.bg-bubbles');
                 for (let i = 0; i < 10; i++) {
