@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Константин Федунов | IT-разработчик</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -238,7 +238,27 @@
         
         @media (max-width: 768px) {
             .container {
-                padding: 1.5rem;
+                padding: 1rem;
+                transform: scale(0.9);
+                transform-origin: top center;
+                width: 100%;
+            }
+            
+            h1 {
+                font-size: clamp(2rem, 6vw, 3rem);
+                margin-bottom: 0.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .name-title {
+                font-size: 1.2rem;
+            }
+            
+            .photo-hint {
+                font-size: 0.9rem;
             }
             
             .buttons {
@@ -247,13 +267,26 @@
             }
             
             .btn-main {
-                display: block;
-                width: 80%;
+                font-size: 1rem;
+                padding: 10px 24px;
                 margin: 0.5rem auto;
+                width: 80%;
+            }
+            
+            .avatar-container {
+                width: 150px;
+                height: 150px;
+                margin: 1rem auto;
             }
             
             .social-links {
                 gap: 1rem;
+            }
+            
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
             }
         }
     </style>
