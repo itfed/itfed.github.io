@@ -6,7 +6,303 @@
     <title>Константин Федунов | IT-разработчик</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --primary: #00f7ff;
+            --secondary: #ff2d75;
+            --dark: #2a303c;
+            --light: #f8f9fa;
+            --text: #e0e0e0;
+            --photo-accent: #ff6b6b;
+        }
+
+        body {
+            background: radial-gradient(ellipse at center, #3a404e 0%, #2a303c 60%, #1a1e28 100%);
+            color: var(--text);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            text-align: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 0.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .name-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.2rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .photo-hint {
+            margin: 0 0 1.5rem;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            margin: 1.5rem auto;
+            border-radius: 3px;
+            opacity: 0.7;
+        }
+
+        .btn-main {
+            display: inline-block;
+            font-size: 1.1rem;
+            color: var(--primary);
+            background: transparent;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 12px 32px;
+            margin: 0.75rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transition: width 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-main:hover {
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 247, 255, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-main:hover::before {
+            width: 100%;
+        }
+
+        .btn-photo {
+            color: white;
+            border: none;
+            background: linear-gradient(135deg, var(--photo-accent), #ff8e8e);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-photo:hover {
+            color: white;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-photo i {
+            margin-right: 8px;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 1.5rem auto;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            background: linear-gradient(var(--dark), var(--dark)) padding-box,
+            linear-gradient(135deg, var(--secondary), var(--primary)) border-box;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .avatar {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            object-position: center top 20%;
+            transition: transform 0.5s ease;
+        }
+
+        .avatar-container:hover .avatar {
+            transform: scale(1.05) rotate(5deg);
+        }
+
+        .avatar-container:hover {
+            box-shadow: 0 15px 40px rgba(0, 247, 255, 0.25);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .social-link {
+            color: var(--text);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(0, 247, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 247, 255, 0.2);
+            text-decoration: none;
+        }
+
+        .bg-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-bubbles li {
+            position: absolute;
+            list-style: none;
+            display: block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            bottom: -160px;
+            animation: square 20s infinite;
+            transition-timing-function: linear;
+            border-radius: 2px;
+        }
+
+        @keyframes square {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+                transform: scale(0.9);
+                transform-origin: top center;
+                width: 100%;
+            }
+
+            h1 {
+                font-size: clamp(2rem, 6vw, 3rem);
+                margin-bottom: 0.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .name-title {
+                font-size: 1.2rem;
+            }
+
+            .photo-hint {
+                font-size: 0.9rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-main {
+                font-size: 1rem;
+                padding: 10px 24px;
+                margin: 0.5rem auto;
+                width: 80%;
+            }
+
+            .avatar-container {
+                width: 150px;
+                height: 150px;
+                margin: 1rem auto;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .bg-bubbles {
+                display: none;
+            }
+
+            .btn-main:hover,
+            .btn-photo:hover,
+            .avatar-container:hover .avatar,
+            .avatar-container:hover,
+            .social-link:hover {
+                transform: none !important;
+            }
+        }
+    </style>
 </head>
 <body>
 <ul class="bg-bubbles">
@@ -27,7 +323,7 @@
     <div class="subtitle">Добро пожаловать на мою персональную страницу</div>
 
     <div class="avatar-container">
-        <img src="images/avatar-optimized.jpg" class="avatar">
+        <img src="avatar-optimized.jpg" alt="Федунов Константин" class="avatar">
     </div>
 
     <div class="name-title">Федунов Константин</div>
@@ -65,6 +361,21 @@
     </div>
 </div>
 
-<script src="js/script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.innerWidth > 768) {
+            const bubblesContainer = document.querySelector('.bg-bubbles');
+            for (let i = 0; i < 10; i++) {
+                const bubble = document.createElement('li');
+                bubble.style.left = Math.random() * 100 + '%';
+                bubble.style.width = (Math.random() * 50 + 20) + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.animationDelay = (Math.random() * 5) + 's';
+                bubble.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                bubblesContainer.appendChild(bubble);
+            }
+        }
+    });
+</script>
 </body>
 </html>
